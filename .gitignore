@@ -1,3 +1,6 @@
+# Personally added
+.env.local
+
 # Logs
 logs
 *.log

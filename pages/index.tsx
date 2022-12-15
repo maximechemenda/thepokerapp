@@ -1,7 +1,17 @@
+// General
 import Head from 'next/head'
+
+// Firebase authentication
+import { useAuthState } from "react-firebase-hooks/auth"
+import { getAuth } from "firebase/auth"
+
+// Components
 import { Navbar, Menu, PageHeader, PokerCardEvent } from "../components"
 
 export default function Home() {
+    const auth = getAuth()
+    const [user, loading] = useAuthState(auth);
+
   return (
       <div>
         <Head>
@@ -11,7 +21,7 @@ export default function Home() {
             
         </Head>
         
-        <Navbar />
+        <Navbar user={user}/>
 
         <div className="grid grid-cols-6">
             <div className="col-span-1">

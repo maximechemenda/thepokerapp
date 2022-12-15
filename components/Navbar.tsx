@@ -1,11 +1,46 @@
 // General
 import React from 'react'
 import Image from 'next/image'
+import Link from "next/link"
+import {User} from "firebase/auth"
 
 // Components
 import { ActionButton, ActionLink } from '.'
 
-export const Navbar : React.FC<{}> = props =>
+// API
+import {AuthenticateUser, SignOutUser} from "../pages/api/auth"
+
+// if user is null (unauthenticated), display signin and signout methods, display signout and create event buttons
+const NavbarAuthSection = (user: User | null | undefined) => {
+    if (!user) {
+        return (
+            <div className="flex flex-row items-center">
+                <ActionButton variant="secondary" className="mr-5" onClick={AuthenticateUser}>
+                    Sign in
+                </ActionButton>
+
+                <ActionButton variant="primary" className="mr-5" onClick={AuthenticateUser}>
+                    Sign up
+                </ActionButton>
+            </div>
+        )
+    } else {
+        return (
+            <div className="flex flex-row items-center">
+                <ActionButton variant="primary" className="mr-5">
+                    Create event
+                </ActionButton>
+
+                <ActionButton variant="secondary" className="mr-5" onClick={SignOutUser}>
+                    Sign out
+                </ActionButton>
+            </div>
+        )
+    }
+}
+
+// Navbar component, which varies based on the authentication state (signed in, or not signed in)
+export const Navbar : React.FC<{user: User | null | undefined}> = props =>
     <div className="bg-sub_background flex flex-row justify-between px-[150px] py-10">
         <Image
             src="/assets/logo.svg"
@@ -15,14 +50,5 @@ export const Navbar : React.FC<{}> = props =>
             title="Navigate to Home Page"
             />    
 
-        <div className="flex flex-row items-center">
-            <ActionButton className="mr-5">
-                Create event
-            </ActionButton>
-
-            <ActionLink>
-                Sign out
-            </ActionLink>
-        </div>
-        
+        {NavbarAuthSection(props.user)}
     </div>

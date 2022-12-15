@@ -64,7 +64,7 @@ export const PokerCardEvent : React.FC<PokerCardEventProps> = ({
         {/* Key values fo the event, containing the buy in amount, the first prize and second prize */}
         <div className="flex justify-between">
             <KeyValue 
-                title="buyin"
+                title="buy in"
                 value={`£${buyin}`}
             />
 
@@ -89,7 +89,7 @@ export const PokerCardEvent : React.FC<PokerCardEventProps> = ({
 
         {/* Button allowing user to register to event */}
         <div className="flex justify-center mt-10">
-            <ActionButton>
+            <ActionButton variant="primary">
                 Register Interest
             </ActionButton>
         </div>
