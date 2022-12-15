@@ -17,8 +17,10 @@ export default function Home() {
             <div className="col-span-1">
                 <Menu />
             </div>
+
             <div className="col-span-5 bg-white flex">
-                hey
+                you
+
             </div>
         </div>
       </div>

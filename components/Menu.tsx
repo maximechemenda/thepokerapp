@@ -16,16 +16,16 @@ export const Menu : React.FC<{}> = props =>
                 ♠️ Poker
             </MenuSection>
             <MenuSection active={false}>
-                ⚽️ Football
+                ⚽️ Football (coming soon...)
             </MenuSection>
             <MenuSection active={false}>
-                🎾 Tennis
+                🎾 Tennis (coming soon...)
             </MenuSection>
             <MenuSection active={false}>
-                🏓 Table Tennis
+                🏓 Table Tennis (coming soon...)
             </MenuSection>
             <MenuSection active={false}>
-                🎶 Techno
+                🎶 Techno (coming soon...)
             </MenuSection>
         </div>
 
