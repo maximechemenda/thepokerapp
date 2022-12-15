@@ -14,7 +14,8 @@ module.exports = {
           "action_strong": "#CFF80B",
           "red": "FF2257",
           "header_color": "#7A7A7E",
-          "black": "#000000"
+          "black": "#000000",
+          "grey": "grey"
       }
     },
     plugins: [],
