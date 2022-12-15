@@ -1,5 +1,5 @@
 import Head from 'next/head'
-import { Navbar } from "../components"
+import { Navbar, Menu } from "../components"
 
 export default function Home() {
   return (
@@ -10,7 +10,17 @@ export default function Home() {
             <link rel="icon" href="/favicon.ico" />
             
         </Head>
+        
         <Navbar />
+
+        <div className="grid grid-cols-6">
+            <div className="col-span-1">
+                <Menu />
+            </div>
+            <div className="col-span-5 bg-white flex">
+                hey
+            </div>
+        </div>
       </div>
   )
 }
