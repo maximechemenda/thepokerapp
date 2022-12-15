@@ -1,6 +1,10 @@
+
+
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "firebase/app";
 import { getAnalytics } from "firebase/analytics";
+import { getFirestore } from "firebase/firestore";
+
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
 
@@ -23,6 +27,15 @@ export const app = initializeApp(firebaseConfig);
 // Export function to initialize firebase
 export const initFirebase = () => {
     return app
+}
+
+// Initialize Cloud Firestore and get a reference to the service
+const db = getFirestore(app);
+
+// Export function to initialize firestore 
+// TODO(MC): Don't know if that is really useful, or what's the perfect way to do it
+export const initFirestore = () => {
+    return db
 }
 
 
