@@ -10,54 +10,39 @@ import PersonIcon from '@mui/icons-material/Person';
 import { PokerCardBase } from '.'
 import { HeaderWithIcon, KeyValue, ActionButton } from '..'
 
+// Utils
+import { EventType } from "../../utils"
+
 interface PokerCardEventProps {
-    title: string;
-    date: string;
-    time: string;
-    location: number;
-    current_players: number;
-    total_players: number;
-    buyin: number;
-    description: string;
-    firstPrize: number;
-    secondPrize: number;
+    event: EventType;
 }
 
 // Content included within the PokerCardBase which contains all the information about a poker event, with a button allowing the 
 // user to register to it.
 export const PokerCardEvent : React.FC<PokerCardEventProps> = ({
-    title, 
-    date,
-    time,
-    location,
-    current_players,
-    total_players,
-    buyin,
-    description,
-    firstPrize,
-    secondPrize
+    event
 })  =>
-    <PokerCardBase>
+    <PokerCardBase id={event.id}>
         {/* Title of the event, e.g. "Friendy poker tournament with friends" */}
         <p className="text-white text-xl mb-3">
-            {title}
+            {event.title}
         </p>
 
         {/* Header of the event, containing main information, such as time, location, and amount of players */}
         <div className="grid grid-rows-4 gap-1">
             <HeaderWithIcon
                 icon={<AccessTimeIcon style={{color: "grey"}}/>}
-                title={`${date} at ${time}`}
+                title={`${event.date} at ${event.time}`}
             />
 
             <HeaderWithIcon
                 icon={<LocationOnIcon style={{color: "grey"}}/>}
-                title={`Within ${location} miles`}
+                title={`Within ${event.location} miles`}
             />
 
             <HeaderWithIcon
                 icon={<PersonIcon style={{color: "grey"}}/>}
-                title={`${current_players}/${total_players}`}
+                title={`${event.current_players}/${event.total_players}`}
             />
         </div>
 
@@ -65,17 +50,17 @@ export const PokerCardEvent : React.FC<PokerCardEventProps> = ({
         <div className="flex justify-between">
             <KeyValue 
                 title="buy in"
-                value={`£${buyin}`}
+                value={`£${event.buyin}`}
             />
 
             <KeyValue 
                 title="first prize"
-                value={`£${firstPrize}`}
+                value={`£${event.firstPrize}`}
             />
 
             <KeyValue 
                 title="second prize"
-                value={`£${secondPrize}`}
+                value={`£${event.secondPrize}`}
             />
         </div>
 
@@ -83,7 +68,7 @@ export const PokerCardEvent : React.FC<PokerCardEventProps> = ({
         {/* Description of the event */}
         <div className="mt-5">
             <p className="text-white">
-                {description}
+                {event.description}
             </p>
         </div>
 

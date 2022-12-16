@@ -1,24 +1,25 @@
 // General
-import React from 'react'
+import React, { useContext } from 'react'
 import Image from 'next/image'
-import {User} from "firebase/auth"
 
 // Components
-import { ActionButton, ActionLink } from '.'
+import { ActionButton } from '.'
 
 // API
-import {AuthenticateUser, SignOutUser} from "../pages/api/auth"
+import { MaxpokeContext } from '../contexts'
 
 // if user is null (unauthenticated), display signin and signout methods, display signout and create event buttons
-const NavbarAuthSection = (user: User | null | undefined) => {
-    if (!user) {
+const NavbarAuthSection = () => {
+    const {handleUserAuth, handleUserSignOut, currentUser} = useContext(MaxpokeContext)
+
+    if (!currentUser) {
         return (
             <div className="flex flex-row items-center">
-                <ActionButton variant="secondary" className="mr-5" onClick={AuthenticateUser}>
+                <ActionButton variant="secondary" className="mr-5" onClick={handleUserAuth}>
                     Sign in
                 </ActionButton>
 
-                <ActionButton variant="primary" className="mr-5" onClick={AuthenticateUser}>
+                <ActionButton variant="primary" className="mr-5" onClick={handleUserAuth}>
                     Sign up
                 </ActionButton>
             </div>
@@ -30,7 +31,7 @@ const NavbarAuthSection = (user: User | null | undefined) => {
                     Create event
                 </ActionButton>
 
-                <ActionButton variant="secondary" className="mr-5" onClick={SignOutUser}>
+                <ActionButton variant="secondary" className="mr-5" onClick={handleUserSignOut}>
                     Sign out
                 </ActionButton>
             </div>
@@ -39,7 +40,7 @@ const NavbarAuthSection = (user: User | null | undefined) => {
 }
 
 // Navbar component, which varies based on the authentication state (signed in, or not signed in)
-export const Navbar : React.FC<{user: User | null | undefined}> = props =>
+export const Navbar : React.FC<{}> = props =>
     <div className="bg-sub_background flex flex-row justify-between px-[150px] py-10">
         <Image
             src="/assets/logo.svg"
@@ -49,5 +50,5 @@ export const Navbar : React.FC<{user: User | null | undefined}> = props =>
             title="Navigate to Home Page"
             />    
 
-        {NavbarAuthSection(props.user)}
+        {NavbarAuthSection()}
     </div>

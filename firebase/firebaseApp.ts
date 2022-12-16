@@ -2,8 +2,15 @@
 
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "firebase/app";
-import { getAnalytics } from "firebase/analytics";
+import { getAuth } from "firebase/auth";
+import { GoogleAuthProvider } from "firebase/auth";
 import { getFirestore } from "firebase/firestore";
+
+
+// TODO(MC): Enable this if analytics is required
+// import { getAnalytics } from "firebase/analytics";
+// const analytics = getAnalytics(app);
+
 
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
@@ -20,22 +27,15 @@ const firebaseConfig = {
     measurementId: process.env.NEXT_PUBLIC_FIREBASE_MEASUREMENT_ID,
 }
 
+
 // Initialize Firebase
-export const app = initializeApp(firebaseConfig);
-// const analytics = getAnalytics(app);
-
-// Export function to initialize firebase
-export const initFirebase = () => {
-    return app
-}
-
-// Initialize Cloud Firestore and get a reference to the service
+const app = initializeApp(firebaseConfig);
+const auth = getAuth(app);
+const provider = new GoogleAuthProvider();
 const db = getFirestore(app);
 
-// Export function to initialize firestore 
-// TODO(MC): Don't know if that is really useful, or what's the perfect way to do it
-export const initFirestore = () => {
-    return db
-}
+export { auth, provider, db}
+
+
 
 
