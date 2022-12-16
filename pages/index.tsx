@@ -8,7 +8,8 @@ import { MaxpokeContext } from "../contexts"
 import { useContext } from "react";
 
 export default function Home() {
-    const { events } = useContext(MaxpokeContext)
+    const { events, currentUser } = useContext(MaxpokeContext)
+    console.log(currentUser)
 
   return (
       <div>
@@ -28,7 +29,8 @@ export default function Home() {
 
             {/* Poker tournaments looking for you */}
             <div className="col-span-5 px-20 pt-10">
-                <PageHeader title="poker tournaments looking for you"/>
+                {/* The variable inside the title is just a joke, it just says "the great {firstName}" */}
+                <PageHeader title={`poker tournaments looking for ${currentUser !== null ? 'the great' : ''} ${(currentUser?.displayName)?.split(" ")[0] ?? 'you'} `}/>
 
                 {/* TODO(MC): Have a separate page/section component to display these poker tournaments */}
                 <div className="grid grid-cols-2 gap-20">

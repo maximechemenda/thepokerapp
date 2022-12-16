@@ -11,3 +11,9 @@ export type EventType = {
     firstPrize: number;
     secondPrize: number;
 }
+
+export type RetrievedUser = {
+    id: string;
+    email: string;
+    photoURL: string;
+}

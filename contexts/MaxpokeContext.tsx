@@ -1,14 +1,9 @@
 import React, { createContext, useState, useEffect } from 'react'
-import { collection, getDocs, setDoc, doc } from "firebase/firestore"
+import { collection, getDocs, setDoc, doc, getDoc } from "firebase/firestore"
 import { db, auth, provider } from "../firebase/firebaseApp"
-import { EventType } from "../utils"
+import { EventType, RetrievedUser } from "../utils"
 import { signInWithPopup, User } from "firebase/auth";
 import { useAuthState } from "react-firebase-hooks/auth"
-
-type RetrievedUser = {
-    id: string;
-    data: any //TODO(MC): Make the type explicit once I added the items in the database
-}
 
 interface IMaxpokeContext {
     users: RetrievedUser[];
@@ -30,10 +25,29 @@ export const MaxpokeProvider: React.FC<{children: React.ReactNode}> = props => {
     // Current user who is signed in (or not)
     const [currentUser, loading] = useAuthState(auth)
 
+    // Adds user to Firebase database in the collection "users" if it hasn't been added already (i.e. if it's the first time user signs in)
+    const addUserToFirebase = async (user: User) => {
+        try {
+            const test_user = await getDoc(doc(db, "users", user.uid));
+
+            if (!test_user.data()) {
+                await setDoc(doc(db, 'users', user.uid), {
+                    email: user.email,
+                    name: user.displayName,
+                    photoURL: user.photoURL
+                })
+            }
+        } catch(e) {
+            console.log(e)
+        }
+    }
+
     // Opens sign in pop up window to sign in or sign up with Google
     const handleUserAuth = async () => {
         try {
-            await signInWithPopup(auth, provider);
+            const result = await signInWithPopup(auth, provider);
+            
+            addUserToFirebase(result.user)
         } catch(e) {
             console.log(e)
         }
@@ -56,9 +70,8 @@ export const MaxpokeProvider: React.FC<{children: React.ReactNode}> = props => {
             const retrieved_users = querySnapshot.docs.map(doc => {
                 return {
                     id: doc.id, 
-                    data: {
-                        ...doc.data()
-                    }
+                    email: doc.data().email,
+                    photoURL: doc.data().photoURL
                 }
             })
             setUsers(retrieved_users)

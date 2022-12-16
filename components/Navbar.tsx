@@ -5,7 +5,7 @@ import Image from 'next/image'
 // Components
 import { ActionButton } from '.'
 
-// API
+// Context
 import { MaxpokeContext } from '../contexts'
 
 // if user is null (unauthenticated), display signin and signout methods, display signout and create event buttons
