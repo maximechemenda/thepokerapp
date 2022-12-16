@@ -10,7 +10,6 @@ import { ActionButton } from '.'
 import { MaxpokeContext } from '../contexts'
 
 
-
 // if user is null (unauthenticated), display signin and signout methods, display signout and create event buttons
 const NavbarAuthSection = () => {
     const {handleUserAuth, handleUserSignOut, currentUser} = useContext(MaxpokeContext)
@@ -26,6 +25,8 @@ const NavbarAuthSection = () => {
                 <ActionButton variant="secondary" className="mr-5" onClick={handleUserAuth}>
                     Sign in
                 </ActionButton>
+
+                {/* <Toaster /> */}
 
                 <ActionButton variant="primary" className="mr-5" onClick={handleUserAuth}>
                     Sign up

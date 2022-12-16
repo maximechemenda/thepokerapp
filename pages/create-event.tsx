@@ -5,6 +5,7 @@ import { Formik, Form, Field } from 'formik';
 import * as Yup from 'yup';
 import uuid from 'react-uuid';
 import { useRouter } from "next/router"
+import toast from 'react-hot-toast';
 
 // Firestore
 import { db } from "../firebase/firebaseApp"
@@ -70,10 +71,11 @@ export default function Home() {
         const dbRef = collection(db, "events")
         addDoc(dbRef, event)
         .then(docRef => {
-            console.log("Document has been added successfully");
+            toast.success("Event successfully added my friend")
             router.push("/")
         })
         .catch(error => {
+            toast.error("Error when adding the event")
             console.log(error);
         })
     }

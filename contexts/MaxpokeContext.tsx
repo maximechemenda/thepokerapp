@@ -4,6 +4,7 @@ import { db, auth, provider } from "../firebase/firebaseApp"
 import { EventType, RetrievedUser } from "../utils"
 import { signInWithPopup, User } from "firebase/auth";
 import { useAuthState } from "react-firebase-hooks/auth"
+import toast from 'react-hot-toast';
 
 interface IMaxpokeContext {
     users: RetrievedUser[];
@@ -43,12 +44,14 @@ export const MaxpokeProvider: React.FC<{children: React.ReactNode}> = props => {
     }
 
     // Opens sign in pop up window to sign in or sign up with Google
-    const handleUserAuth = async () => {
+    const handleUserAuth = async () => { 
         try {
             const result = await signInWithPopup(auth, provider);
-            
-            addUserToFirebase(result.user)
+            await addUserToFirebase(result.user);
+
+            toast.success("Successfully signed in!")
         } catch(e) {
+            toast.error("Error when signing in :(")
             console.log(e)
         }
     }
@@ -57,7 +60,9 @@ export const MaxpokeProvider: React.FC<{children: React.ReactNode}> = props => {
     const handleUserSignOut = async () => {
         try {
             await auth.signOut();
+            toast.success("Adios amigos")
         } catch(e) {
+            toast.error("Error when signing out :(")
             console.log(e)
         }
     }
