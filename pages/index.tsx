@@ -9,7 +9,6 @@ import { useContext } from "react";
 
 export default function Home() {
     const { events, currentUser } = useContext(MaxpokeContext)
-    console.log(currentUser)
 
   return (
       <div>
