@@ -2,7 +2,7 @@ import React from 'react';
 
 interface HeaderWithIconProps {
     icon: React.ReactNode;
-    title: string;
+    title: string | undefined;
 }
 
 // Used to display an icon on the left, and a text on the right (for example a clock icon on the left, with the date on the right)

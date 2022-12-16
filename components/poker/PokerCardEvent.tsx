@@ -52,7 +52,7 @@ export const PokerCardEvent : React.FC<PokerCardEventProps> = ({
 
                 <HeaderWithIcon
                     icon={<LocationOnIcon style={{color: "grey"}}/>}
-                    title={`Within ${event.location} miles`}
+                    title={event.location}
                 />
 
                 <HeaderWithIcon
