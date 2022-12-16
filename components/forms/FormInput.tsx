@@ -4,19 +4,13 @@ interface FormInputProps {
     title: string;
     placeholder: string;
     type: string;
-    value: string;
-    // handleChange: (props: string) => (e: React.ChangeEvent<HTMLInputElement>)
+    value: string | number | undefined;
+    handleChange: (e: React.ChangeEvent<HTMLInputElement>) => void
 }
 
 export const FormInput: React.FC<FormInputProps> = props => {
-    const [value, setValue] = React.useState('')
-
-    const handleChange = (props: string) => (e: React.ChangeEvent<HTMLInputElement>) => {
-        setValue(e.target.value)
-    }
-
     return (
-        <div>
+        <div className="grid">
             <p className="text-sm text-grey">
                 {props.title}
             </p>    
@@ -24,8 +18,10 @@ export const FormInput: React.FC<FormInputProps> = props => {
             <input 
                 type={props.type}
                 placeholder={props.placeholder} 
-                value={value}
-                onChange={handleChange(value)} />
+                value={props.value}
+                onChange={(e) => props.handleChange(e)}
+                className="text-white px-4 py-2 rounded-md bg-sub_background border-solid border-[1px] border-grey"
+                />
         </div>  
     )
 }

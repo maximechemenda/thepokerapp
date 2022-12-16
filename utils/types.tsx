@@ -1,15 +1,15 @@
 export type EventType = {
-    id: string;
-    title: string;
-    date: string;
-    time: string;
-    location: number;
-    current_players: number;
-    total_players: number;
-    buyin: number;
-    description: string;
-    firstPrize: number;
-    secondPrize: number;
+    id: string | undefined;
+    title: string | undefined;
+    date: string | undefined;
+    time: string | undefined;
+    location: number | undefined;
+    current_players: number | undefined;
+    total_players: number | undefined;
+    buyin: number | undefined;
+    description: string | undefined;
+    firstPrize: number | undefined;
+    secondPrize: number | undefined;
 }
 
 export type RetrievedUser = {

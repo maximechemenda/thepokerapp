@@ -1,6 +1,7 @@
 // General
 import React, { useContext } from 'react'
 import Image from 'next/image'
+import { useRouter } from "next/router"
 
 // Components
 import { ActionButton } from '.'
@@ -8,9 +9,16 @@ import { ActionButton } from '.'
 // Context
 import { MaxpokeContext } from '../contexts'
 
+
+
 // if user is null (unauthenticated), display signin and signout methods, display signout and create event buttons
 const NavbarAuthSection = () => {
     const {handleUserAuth, handleUserSignOut, currentUser} = useContext(MaxpokeContext)
+    const router = useRouter()
+
+    const handleCreateEvent = () => {
+        router.push("/create-event")
+    }
 
     if (!currentUser) {
         return (
@@ -27,7 +35,7 @@ const NavbarAuthSection = () => {
     } else {
         return (
             <div className="flex flex-row items-center">
-                <ActionButton variant="primary" className="mr-5">
+                <ActionButton variant="primary" className="mr-5" onClick={handleCreateEvent}>
                     Create event
                 </ActionButton>
 
