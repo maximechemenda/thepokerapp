@@ -23,7 +23,7 @@ export const PokerCardEvent : React.FC<PokerCardEventProps> = ({
     event
 })  => {
     return (
-        <PokerCardBase id={event.id}>
+        <PokerCardBase>
             {/* Title of the event, e.g. "Friendy poker tournament with friends" */}
             <p className="text-white text-xl mb-3">
                 {event.title}

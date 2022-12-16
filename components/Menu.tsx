@@ -16,16 +16,16 @@ export const Menu : React.FC<{}> = props =>
                 <MenuSection active={true}>
                     ♠️ Poker
                 </MenuSection>
-                <MenuSection active={false}>
+                <MenuSection className="opacity-50 cursor-not-allowed" active={false}>
                     ⚽️ Football (coming soon...)
                 </MenuSection>
-                <MenuSection active={false}>
+                <MenuSection className="opacity-50 cursor-not-allowed" active={false}>
                     🎾 Tennis (coming soon...)
                 </MenuSection>
-                <MenuSection active={false}>
+                <MenuSection className="opacity-50 cursor-not-allowed" active={false}>
                     🏓 Table Tennis (coming soon...)
                 </MenuSection>
-                <MenuSection active={false}>
+                <MenuSection className="opacity-50 cursor-not-allowed" active={false}>
                     🎶 Techno (coming soon...)
                 </MenuSection>
             </div>
@@ -37,13 +37,13 @@ export const Menu : React.FC<{}> = props =>
 
             <div className="mt-3">
                 <MenuSection active={true}>
-                    🙋‍♂️ Join an event
+                    🙋‍♂️ Explore poker events
                 </MenuSection>
                 <MenuSection active={false}>
-                    👨‍👩‍👦‍👦 Fill your group
+                    👨‍👩‍👦‍👦 Create a project
                 </MenuSection>
-                <MenuSection active={false}>
-                    🔁 View past events
+                <MenuSection active={false} className="opacity-50 cursor-not-allowed">
+                    🔁 View past events (coming soon...)
                 </MenuSection>
             </div>
         </div>

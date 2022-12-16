@@ -34,7 +34,7 @@ export default function Home() {
 
                 <div className="grid grid-cols-2 gap-20">
                     {events.map(event => (
-                        <PokerCardEvent event={event}/>
+                        <PokerCardEvent key={event.id} event={event}/>
                     ))}
                 </div>
             </div>
