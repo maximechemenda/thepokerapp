@@ -1,5 +1,6 @@
 // General
-import React from 'react'
+import React, { useContext } from 'react'
+import toast from "react-hot-toast"
 
 // Assets from Material-UI
 import AccessTimeIcon from '@mui/icons-material/AccessTime';
@@ -13,6 +14,9 @@ import { HeaderWithIcon, KeyValue, ActionButton } from '..'
 // Utils
 import { EventType } from "../../utils"
 
+// Context
+import { MaxpokeContext } from "../../contexts"
+
 interface PokerCardEventProps {
     event: EventType;
 }
@@ -22,6 +26,16 @@ interface PokerCardEventProps {
 export const PokerCardEvent : React.FC<PokerCardEventProps> = ({
     event
 })  => {
+    const { currentUser } = useContext(MaxpokeContext)
+
+    const registerInterest = () => {
+        if (currentUser !== null) {
+            toast.success("The event organiser has been notified")
+        } else {
+            toast.error("Please sign up to register interest")
+        }
+    }
+
     return (
         <PokerCardBase>
             {/* Title of the event, e.g. "Friendy poker tournament with friends" */}
@@ -75,7 +89,7 @@ export const PokerCardEvent : React.FC<PokerCardEventProps> = ({
 
             {/* Button allowing user to register to event */}
             <div className="flex justify-center mt-10">
-                <ActionButton variant="primary">
+                <ActionButton onClick={registerInterest} variant="primary">
                     Register Interest
                 </ActionButton>
             </div>

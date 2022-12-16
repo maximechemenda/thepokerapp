@@ -4,20 +4,21 @@ import React from "react"
 import { Formik, Form, Field } from 'formik';
 import * as Yup from 'yup';
 import uuid from 'react-uuid';
-import { useRouter } from "next/router"
 import toast from 'react-hot-toast';
+import { useRouter } from "next/router"
 
 // Firestore
 import { db } from "../firebase/firebaseApp"
 import { addDoc, collection } from "firebase/firestore"
 
 // Components
-import { Navbar, ActionButton, FormBase, FormInput } from "../components"
+import { Navbar, ActionButton, FormBase, FormInput, Menu } from "../components"
 
 // Utils
 import { EventType } from "../utils"
 
 export default function Home() {
+    const router = useRouter();
     const initialEvent: EventType = {
         id: uuid(),
         title: undefined,
@@ -64,9 +65,8 @@ export default function Home() {
             .required('This field is required'),
       });
 
-    const router = useRouter()
+    
 
-    // TOOD(MC): Add success and error toasts
     const addProjectToFirebase = async (event: EventType) => {
         const dbRef = collection(db, "events")
         addDoc(dbRef, event)
@@ -91,8 +91,16 @@ export default function Home() {
         
         <Navbar />
 
-        <div className="grid grid-cols-9 mt-[80px]">
-            <div className="col-start-4 col-span-3">
+        <div className="grid grid-cols-6">
+            <div className="col-span-1">
+                <Menu />
+            </div>
+        
+        
+        {/* TODO(MC): Clean this code */}
+        <div className="col-span-5">
+            <div className="grid grid-cols-7 mt-[50px]">
+            <div className="col-start-3 col-span-3">
                 <FormBase>
                     <p className="text-white font-bold text-2xl mb-10">
                         create a poker event
@@ -226,6 +234,8 @@ export default function Home() {
                         )}
                     </Formik>
                 </FormBase>
+            </div>
+            </div>
             </div>
         </div>
       </div>
