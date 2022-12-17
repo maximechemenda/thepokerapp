@@ -16,22 +16,31 @@ export const Menu : React.FC<{}> = props =>{
                 <MediumHeader paddingL="pl-10" title="Activities" />
 
                 <div className="mt-3">
-                    {/* <MenuSection active={true}> */}
-                    <MenuSection className="cursor-pointer" active={true}>
-                        ♠️ Poker
-                    </MenuSection>
-                    <MenuSection className="opacity-50 cursor-not-allowed" active={false}>
-                        ⚽️ Football
-                    </MenuSection>
-                    <MenuSection className="opacity-50 cursor-not-allowed" active={false}>
-                        🎾 Tennis
-                    </MenuSection>
-                    <MenuSection className="opacity-50 cursor-not-allowed" active={false}>
-                        🏓 Table Tennis
-                    </MenuSection>
-                    <MenuSection className="opacity-50 cursor-not-allowed" active={false}>
-                        🎶 Techno
-                    </MenuSection>
+                    <MenuSection className="cursor-pointer" 
+                    active={true}
+                    title="Poker"
+                    />
+
+                    <MenuSection className="opacity-20 cursor-not-allowed" 
+                    active={false}
+                    title="Football"
+                    />
+
+                    <MenuSection className="opacity-20 cursor-not-allowed"
+                    active={false}
+                    title="Tennis"
+                    />
+
+                    <MenuSection className="opacity-20 cursor-not-allowed"
+                    active={false}
+                    title="Table Tennis"
+                    />
+
+                    <MenuSection className="opacity-20 cursor-not-allowed"
+                    active={false}
+                    title="Techno"
+                    />
+
                 </div>
             </div>
 
@@ -40,15 +49,23 @@ export const Menu : React.FC<{}> = props =>{
                 <MediumHeader paddingL="pl-10" title="Actions" />
 
                 <div className="mt-3">
-                    <MenuSection className="cursor-pointer" onClick={() => router.push("/")} active={router.pathname === "/"}> {/* TODO(MC): Add these paths in a constant.js file in /utils */}
-                        🙋‍♂️ Explore events
-                    </MenuSection>
-                    <MenuSection className="cursor-pointer" onClick={() => router.push("/create-event")} active={router.pathname === "/create-event"}>
-                        👨‍👩‍👦‍👦 Create event
-                    </MenuSection>
-                    <MenuSection active={false} className="opacity-50 cursor-not-allowed">
-                        🔁 Past events
-                    </MenuSection>
+                    {/* TODO(MC): Add these paths in a constant.js file in /utils */}
+                    <MenuSection className="cursor-pointer"
+                    onClick={() => router.push("/")} 
+                    active={router.pathname === "/"}
+                    title="Explore Events"
+                    />
+
+                    <MenuSection className="cursor-pointer"
+                    onClick={() => router.push("/create-event")} 
+                    active={router.pathname === "/create-event"}
+                    title="Create Event"
+                    />
+
+                    <MenuSection className="opacity-20 cursor-not-allowed"
+                    active={false}
+                    title="Past Events"
+                    />
                 </div>
             </div>
 

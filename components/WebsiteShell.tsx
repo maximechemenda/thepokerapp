@@ -30,7 +30,7 @@ const DesktopWebsiteShell : React.FC<InnerWebsiteShellProps> = ({
                     <Menu />
                 </div>
 
-                <div className="col-span-5 px-20 pt-10">
+                <div className="col-span-5 px-20 pt-0">
                     <PageHeader title={page_title} />
                     {children}
                 </div>
