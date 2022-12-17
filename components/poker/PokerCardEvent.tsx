@@ -109,8 +109,8 @@ export const PokerCardEvent : React.FC<PokerCardEventProps> = ({event})  => {
 
                 <HeaderWithIcon
                     icon={<PersonIcon style={{color: "grey"}}/>}
-                    // title={`${event.current_players}/${event.total_players}`}
-                    title={`${event.interestedUsers.length}/${event.total_players}`}
+                    title={`${event.current_players}/${event.total_players}`}
+                    // title={`${event.interestedUsers.length}/${event.total_players}`}
                 />
             </div>
 
