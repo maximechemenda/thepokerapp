@@ -5,6 +5,7 @@ import { EventType, RetrievedUser } from "../utils"
 import { signInWithPopup, User } from "firebase/auth";
 import { useAuthState } from "react-firebase-hooks/auth"
 import toast from 'react-hot-toast';
+import { useRouter } from "next/router"
 
 interface IMaxpokeContext {
     users: RetrievedUser[];
@@ -25,6 +26,8 @@ export const MaxpokeProvider: React.FC<{children: React.ReactNode}> = props => {
 
     // Current user who is signed in (or not)
     const [currentUser, loading] = useAuthState(auth)
+
+    const router = useRouter();
 
     // Adds user to Firebase database in the collection "users" if it hasn't been added already (i.e. if it's the first time user signs in)
     const addUserToFirebase = async (user: User) => {
@@ -61,6 +64,7 @@ export const MaxpokeProvider: React.FC<{children: React.ReactNode}> = props => {
         try {
             await auth.signOut();
             toast.success("Adios amigos")
+            router.push("/")
         } catch(e) {
             toast.error("Error when signing out :(")
             console.log(e)
