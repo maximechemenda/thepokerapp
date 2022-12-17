@@ -42,6 +42,7 @@ export const MaxpokeProvider: React.FC<{children: React.ReactNode}> = props => {
 
             if (!test_user.data()) {
                 await setDoc(doc(db, 'users', user.uid), {
+                    uid: user.uid,
                     email: user.email,
                     name: user.displayName,
                     photoURL: user.photoURL
@@ -84,8 +85,9 @@ export const MaxpokeProvider: React.FC<{children: React.ReactNode}> = props => {
 
             const retrieved_users = querySnapshot.docs.map(doc => {
                 return {
-                    id: doc.id, 
+                    uid: doc.id, 
                     email: doc.data().email,
+                    name: doc.data().name,
                     photoURL: doc.data().photoURL
                 }
             })
@@ -102,7 +104,7 @@ export const MaxpokeProvider: React.FC<{children: React.ReactNode}> = props => {
 
             const retrieved_events = querySnapshot.docs.map(doc => {
                 return {
-                    id: doc.id,
+                    uid: doc.id,
                     title: doc.data().title,
                     date: doc.data().date,
                     time: doc.data().time,
@@ -113,6 +115,7 @@ export const MaxpokeProvider: React.FC<{children: React.ReactNode}> = props => {
                     description: doc.data().description,
                     firstPrize: doc.data().firstPrize,
                     secondPrize: doc.data().secondPrize,
+                    interestedUsers: doc.data().interestedUsers
                 }
             })
             setEvents(retrieved_events)

@@ -8,10 +8,10 @@ import { useRouter } from "next/router"
 
 // Firestore
 import { db } from "../firebase/firebaseApp"
-import { addDoc, collection } from "firebase/firestore"
+import { setDoc, doc } from "firebase/firestore"
 
 // Components
-import { ActionButton, FormBase, FormInput, Menu, WebsiteShell } from "../components"
+import { ActionButton, FormBase, FormInput, WebsiteShell } from "../components"
 
 // Utils
 import { EventType } from "../utils"
@@ -19,7 +19,7 @@ import { EventType } from "../utils"
 export default function Home() {
     const router = useRouter();
     const initialEvent: EventType = {
-        id: uuid(),
+        uid: uuid(),
         title: undefined,
         date: undefined,
         time: undefined,
@@ -29,7 +29,8 @@ export default function Home() {
         buyin: undefined,
         description: undefined,
         firstPrize: undefined,
-        secondPrize: undefined
+        secondPrize: undefined,
+        interestedUsers: []
     }
 
     const validationSchema = Yup.object().shape({
@@ -67,8 +68,9 @@ export default function Home() {
     
 
     const addProjectToFirebase = async (event: EventType) => {
-        const dbRef = collection(db, "events")
-        addDoc(dbRef, event)
+        const docRef = doc(db, "events", event.uid);
+
+        setDoc(docRef, event)
         .then(docRef => {
             toast.success("Event successfully added my friend")
             router.push("/")
@@ -87,8 +89,8 @@ export default function Home() {
      >
          {/* TODO(MC): Clean this code */}
         <div className="col-span-5">
-            <div className="grid md:grid-cols-7">
-            <div className="col-span-3">
+            <div className="grid grid-cols-7">
+            <div className="col-span-7 md:col-span-7 lg:col-span-5 xl:col-span-3">
                 <FormBase>
                     <Formik
                         initialValues={initialEvent}

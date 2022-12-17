@@ -1,5 +1,5 @@
 export type EventType = {
-    id: string | undefined;
+    uid: string;
     title: string | undefined;
     date: string | undefined;
     time: string | undefined;
@@ -10,10 +10,13 @@ export type EventType = {
     description: string | undefined;
     firstPrize: number | undefined;
     secondPrize: number | undefined;
+    interestedUsers: RetrievedUser[]
 }
 
 export type RetrievedUser = {
-    id: string;
-    email: string;
-    photoURL: string;
+    uid: string;
+    email: string | null;
+    name: string | null;
+    photoURL: string | null;
 }
+
