@@ -82,7 +82,8 @@ export default function Home() {
 
 
   return (
-      <div>
+     // TODO(MC): Add this to a websiteShellComponent (and include in it the same code used in pages/index.tsx), including what's in the HEAD and the MENU
+      <div className="h-[100vh]">
         <Head>
             <title>Create a poker event</title>
             <meta name="description" content="Create an event and let players join you!" />
@@ -91,7 +92,7 @@ export default function Home() {
         
         <Navbar />
 
-        <div className="grid grid-cols-6">
+        <div className="h-full grid grid-cols-6">
             <div className="col-span-1">
                 <Menu />
             </div>

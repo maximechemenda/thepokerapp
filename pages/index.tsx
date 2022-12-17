@@ -11,7 +11,7 @@ export default function Home() {
     const { events, currentUser } = useContext(MaxpokeContext)
 
   return (
-      <div>
+      <div className="h-[100vh]">
         <Head>
             <title>The Poker App</title>
             <meta name="description" content="The place where you find poker players" />
@@ -21,7 +21,7 @@ export default function Home() {
         
         <Navbar />
 
-        <div className="grid grid-cols-6">
+        <div className="h-full grid grid-cols-6">
             <div className="col-span-1">
                 <Menu />
             </div>

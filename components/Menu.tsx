@@ -14,7 +14,7 @@ export const Menu : React.FC<{}> = props =>{
 
     return (
 
-        <div className="bg-sub_background">
+        <div className="bg-sub_background h-full">
 
             {/* Activities Section */}
             <div className="pt-10">
@@ -46,10 +46,10 @@ export const Menu : React.FC<{}> = props =>{
 
                 <div className="mt-3">
                     <MenuSection onClick={() => router.push("/")} active={router.pathname === "/"}> {/* TODO(MC): Add these paths in a constant.js file in /utils */}
-                        🙋‍♂️ Explore poker events
+                        🙋‍♂️ Explore events
                     </MenuSection>
                     <MenuSection onClick={() => router.push("/create-event")} active={router.pathname === "/create-event"}>
-                        👨‍👩‍👦‍👦 Create an event
+                        👨‍👩‍👦‍👦 Create event
                     </MenuSection>
                     <MenuSection active={false} className="opacity-50 cursor-not-allowed">
                         🔁 View past events (coming soon...)
