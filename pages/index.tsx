@@ -17,7 +17,7 @@ export default function Home() {
             <div className="grid grid-cols-1 gap-10 md:grid-cols-2 md:gap-20">
                 {/* TODO(MC): Have a separate page/section component to display these poker tournaments */}
                 {events.map(event => (
-                    <div key={event.id} className="col-span-1">
+                    <div key={event.uid} className="col-span-1">
                         <PokerCardEvent event={event}/>
                     </div>
                 ))}
