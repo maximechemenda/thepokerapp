@@ -44,7 +44,7 @@ const MobileWebsiteShell : React.FC<InnerWebsiteShellProps> = ({
 }) => {
     const { isMenuOpen, setIsMenuOpen } = useContext(MaxpokeContext)
     return (
-        <div className="block lg:hidden">
+        <div className="block lg:hidden pb-10">
             <Navbar />
 
             <div className="h-full">

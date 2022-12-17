@@ -69,12 +69,12 @@ export const PokerCardEvent : React.FC<PokerCardEventProps> = ({
                 />
 
                 <KeyValue 
-                    title="first prize"
+                    title="1st prize"
                     value={`£${event.firstPrize}`}
                 />
 
                 <KeyValue 
-                    title="second prize"
+                    title="2nd prize"
                     value={`£${event.secondPrize}`}
                 />
             </div>
