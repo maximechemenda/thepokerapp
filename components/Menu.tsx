@@ -2,18 +2,14 @@
 import React from 'react'
 import { useRouter } from "next/router"
 // Components
-import { MediumHeader, MenuSection } from '.'
+import { MediumHeader, MenuSection, NavbarAuthSection } from '.'
 
 // Menu on the left of the platform, where the user can select the activites and actions
 export const Menu : React.FC<{}> = props =>{
     const router = useRouter()
 
-    const goToCreateProjectPage = () => {
-        router.push("/create-event")
-    }
-
     return (
-        <div className="bg-sub_background h-full rounded-r-xl">
+        <div className="bg-sub_background h-full rounded-r-xl pb-10">
 
             {/* Activities Section */}
             <div className="pt-10">
@@ -21,39 +17,47 @@ export const Menu : React.FC<{}> = props =>{
 
                 <div className="mt-3">
                     {/* <MenuSection active={true}> */}
-                    <MenuSection active={true}>
+                    <MenuSection className="cursor-pointer" active={true}>
                         ♠️ Poker
                     </MenuSection>
                     <MenuSection className="opacity-50 cursor-not-allowed" active={false}>
-                        ⚽️ Football (coming soon...)
+                        ⚽️ Football
                     </MenuSection>
                     <MenuSection className="opacity-50 cursor-not-allowed" active={false}>
-                        🎾 Tennis (coming soon...)
+                        🎾 Tennis
                     </MenuSection>
                     <MenuSection className="opacity-50 cursor-not-allowed" active={false}>
-                        🏓 Table Tennis (coming soon...)
+                        🏓 Table Tennis
                     </MenuSection>
                     <MenuSection className="opacity-50 cursor-not-allowed" active={false}>
-                        🎶 Techno (coming soon...)
+                        🎶 Techno
                     </MenuSection>
                 </div>
             </div>
 
             {/* Actions Section */}
-            <div className="mt-20">
+            <div className="mt-10">
                 <MediumHeader paddingL="pl-10" title="Actions" />
 
                 <div className="mt-3">
-                    <MenuSection onClick={() => router.push("/")} active={router.pathname === "/"}> {/* TODO(MC): Add these paths in a constant.js file in /utils */}
+                    <MenuSection className="cursor-pointer" onClick={() => router.push("/")} active={router.pathname === "/"}> {/* TODO(MC): Add these paths in a constant.js file in /utils */}
                         🙋‍♂️ Explore events
                     </MenuSection>
-                    <MenuSection onClick={() => router.push("/create-event")} active={router.pathname === "/create-event"}>
+                    <MenuSection className="cursor-pointer" onClick={() => router.push("/create-event")} active={router.pathname === "/create-event"}>
                         👨‍👩‍👦‍👦 Create event
                     </MenuSection>
                     <MenuSection active={false} className="opacity-50 cursor-not-allowed">
-                        🔁 View past events (coming soon...)
+                        🔁 Past events
                     </MenuSection>
                 </div>
+            </div>
+
+            {/* Auth nav bar buttons. Shown only if small screen size, otherwise it's hidden and 
+            the component is in the Navbar component (when on Desktop). 
+            
+            TODO(MC) improve code structure for this. it's bad now because we have some navbar stuff in the Menu based on the screen size => not consistent */}
+            <div className="flex lg:hidden mt-10 justify-center">
+                <NavbarAuthSection />
             </div>
         </div>
     )

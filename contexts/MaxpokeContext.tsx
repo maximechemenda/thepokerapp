@@ -13,6 +13,8 @@ interface IMaxpokeContext {
     currentUser: User | null | undefined
     handleUserAuth: () => Promise<any>;
     handleUserSignOut: () => Promise<any>;
+    isMenuOpen: Boolean;
+    setIsMenuOpen: React.Dispatch<React.SetStateAction<Boolean>>;
 }
 
 export const MaxpokeContext = createContext<IMaxpokeContext>({} as IMaxpokeContext);
@@ -26,6 +28,10 @@ export const MaxpokeProvider: React.FC<{children: React.ReactNode}> = props => {
 
     // Current user who is signed in (or not)
     const [currentUser, loading] = useAuthState(auth)
+
+    // Control menu state (when using mobile)
+    // TODO(MC): There are too many things in this context - maybe good to refactor in order to have files for each type of context (or use hooks?)
+    const [isMenuOpen, setIsMenuOpen] = useState<Boolean>(false)
 
     const router = useRouter();
 
@@ -116,7 +122,7 @@ export const MaxpokeProvider: React.FC<{children: React.ReactNode}> = props => {
     }, [])
 
     return (
-        <MaxpokeContext.Provider value={{ users, events, handleUserAuth, handleUserSignOut, currentUser}}>
+        <MaxpokeContext.Provider value={{ users, events, handleUserAuth, handleUserSignOut, currentUser, isMenuOpen, setIsMenuOpen}}>
             {props.children}
         </MaxpokeContext.Provider>
     )

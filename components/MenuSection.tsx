@@ -15,7 +15,7 @@ export const MenuSection : React.FC<MenuSectionProps> = ({
     className,
     ...props
 }) =>
-    <div className={`cursor-pointer ${className ?? ''} ${active ? "bg-action_strong" : "bg-sub_background"} py-6 ${paddingL}`} {...props}>
+    <div className={`${className ?? ''} ${active ? "bg-action_strong" : "bg-sub_background"} py-6 ${paddingL}`} {...props}>
         <p className={`font-bold ${active ? "text-black" : "text-white"}`}>
             {children}
         </p>
