@@ -55,7 +55,7 @@ export const Navbar : React.FC<{}> = props => {
     const { isMenuOpen, setIsMenuOpen } = useContext(MaxpokeContext)
 
     return (
-        <div className="flex flex-row bg-sub_background justify-between px-5 lg:px-[50px] py-5 rlg:ounded-b-xl lg:mb-10">
+        <div className="flex flex-row bg-sub_background justify-between px-6 lg:px-[50px] py-5 rlg:ounded-b-xl lg:mb-10">
             <Image
                 src="/assets/logo.svg"
                 alt="Pokemax Logo"

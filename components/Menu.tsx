@@ -9,10 +9,10 @@ export const Menu : React.FC<{}> = props =>{
     const router = useRouter()
 
     return (
-        <div className="bg-sub_background h-full rounded-r-xl pb-10">
+        <div className="bg-sub_background h-[100vh] lg:h-full rounded-r-xl pb-10">
 
             {/* Activities Section */}
-            <div className="pt-10">
+            <div className="pt-5 lg:pt-10">
                 <MediumHeader paddingL="pl-10" title="Activities" />
 
                 <div className="mt-3">
@@ -36,7 +36,7 @@ export const Menu : React.FC<{}> = props =>{
             </div>
 
             {/* Actions Section */}
-            <div className="mt-10">
+            <div className="mt-5 lg:mt-10">
                 <MediumHeader paddingL="pl-10" title="Actions" />
 
                 <div className="mt-3">
@@ -56,7 +56,7 @@ export const Menu : React.FC<{}> = props =>{
             the component is in the Navbar component (when on Desktop). 
             
             TODO(MC) improve code structure for this. it's bad now because we have some navbar stuff in the Menu based on the screen size => not consistent */}
-            <div className="flex lg:hidden mt-10 justify-center">
+            <div className="flex lg:hidden mt-5 lg:mt-10 justify-center">
                 <NavbarAuthSection />
             </div>
         </div>
