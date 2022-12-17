@@ -13,8 +13,7 @@ export const Menu : React.FC<{}> = props =>{
     }
 
     return (
-
-        <div className="bg-sub_background h-full">
+        <div className="bg-sub_background h-full rounded-r-xl">
 
             {/* Activities Section */}
             <div className="pt-10">

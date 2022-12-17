@@ -51,7 +51,7 @@ const NavbarAuthSection = () => {
 
 // Navbar component, which varies based on the authentication state (signed in, or not signed in)
 export const Navbar : React.FC<{}> = props =>
-    <div className="flex flex-row bg-sub_background justify-between px-[50px] py-10">
+    <div className="flex flex-row bg-sub_background justify-between px-[50px] py-5 rounded-b-xl mb-10">
         <Image
             src="/assets/logo.svg"
             alt="Pokemax Logo"
