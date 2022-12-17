@@ -87,7 +87,7 @@ export default function Home() {
      >
          {/* TODO(MC): Clean this code */}
         <div className="col-span-5">
-            <div className="grid grid-cols-7">
+            <div className="grid md:grid-cols-7">
             <div className="col-span-3">
                 <FormBase>
                     <Formik
@@ -124,7 +124,7 @@ export default function Home() {
                                         />
                                     
 
-                                    <div className="grid grid-cols-2 gap-5">
+                                    <div className="grid md:grid-cols-2 gap-5">
                                         <Field
                                             name="date"
                                             component={FormInput}
@@ -146,7 +146,7 @@ export default function Home() {
                                         />
                                     </div>
 
-                                    <div className="grid grid-cols-2 gap-5">
+                                    <div className="grid md:grid-cols-2 gap-5">
                                         <Field
                                             name="current_players"
                                             type="number"
@@ -167,7 +167,7 @@ export default function Home() {
                                         />
                                     </div>
 
-                                    <div className="grid grid-cols-2 gap-5">
+                                    <div className="grid md:grid-cols-2 gap-5">
                                         <Field
                                             name="buyin"
                                             type="number"
