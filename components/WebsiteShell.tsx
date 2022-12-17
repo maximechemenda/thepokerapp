@@ -54,7 +54,7 @@ const MobileWebsiteShell : React.FC<InnerWebsiteShellProps> = ({
                     <Menu />
                 </div>
                 : 
-                <div className="mt-10 px-10">
+                <div className="mt-10 px-5">
                     <PageHeader title={page_title} />
                     {children}
                 </div>
