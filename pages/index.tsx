@@ -14,7 +14,7 @@ export default function Home() {
         head_description="The place where you find poker players"
         page_title={`poker tournaments looking for ${currentUser !== null ? 'the great' : ''} ${(currentUser?.displayName)?.split(" ")[0] ?? 'you'} `}
         >
-            <div className="grid grid-cols-2 gap-20">
+            <div className="grid grid-cols-1 gap-10 md:grid-cols-2 md:gap-20">
                 {/* TODO(MC): Have a separate page/section component to display these poker tournaments */}
                 {events.map(event => (
                     <div className="col-span-1">
