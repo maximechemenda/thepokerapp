@@ -8,5 +8,5 @@ export * from './PageHeader';
 export * from './poker';
 export * from './HeaderWithIcon';
 export * from './KeyValue';
-export * from './forms';
+export * from './FormInput';
 export * from './WebsiteShell';

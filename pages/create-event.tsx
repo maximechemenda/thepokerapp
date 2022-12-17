@@ -11,7 +11,7 @@ import { db } from "../firebase/firebaseApp"
 import { setDoc, doc } from "firebase/firestore"
 
 // Components
-import { ActionButton, FormBase, FormInput, WebsiteShell, PokerCardBase } from "../components"
+import { ActionButton, FormInput, WebsiteShell, PokerCardBase } from "../components"
 
 // Utils
 import { EventType } from "../utils"
