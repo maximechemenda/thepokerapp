@@ -11,7 +11,7 @@ import { db } from "../firebase/firebaseApp"
 import { setDoc, doc } from "firebase/firestore"
 
 // Components
-import { ActionButton, FormBase, FormInput, WebsiteShell } from "../components"
+import { ActionButton, FormBase, FormInput, WebsiteShell, PokerCardBase } from "../components"
 
 // Utils
 import { EventType } from "../utils"
@@ -91,7 +91,7 @@ export default function Home() {
         <div className="col-span-5">
             <div className="grid grid-cols-7">
             <div className="col-span-7 md:col-span-7 lg:col-span-5 xl:col-span-3">
-                <FormBase>
+                <PokerCardBase>
                     <Formik
                         initialValues={initialEvent}
                         validationSchema={validationSchema}
@@ -219,7 +219,7 @@ export default function Home() {
                             </Form>
                         )}
                     </Formik>
-                </FormBase>
+                </PokerCardBase>
             </div>
             </div>
             </div>
