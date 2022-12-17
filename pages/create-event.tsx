@@ -1,5 +1,4 @@
 // General
-import Head from 'next/head'
 import React from "react"
 import { Formik, Form, Field } from 'formik';
 import * as Yup from 'yup';
@@ -12,7 +11,7 @@ import { db } from "../firebase/firebaseApp"
 import { addDoc, collection } from "firebase/firestore"
 
 // Components
-import { Navbar, ActionButton, FormBase, FormInput, Menu } from "../components"
+import { ActionButton, FormBase, FormInput, Menu, WebsiteShell } from "../components"
 
 // Utils
 import { EventType } from "../utils"
@@ -80,33 +79,17 @@ export default function Home() {
         })
     }
 
-
   return (
-     // TODO(MC): Add this to a websiteShellComponent (and include in it the same code used in pages/index.tsx), including what's in the HEAD and the MENU
-      <div className="h-[100vh]">
-        <Head>
-            <title>Create a poker event</title>
-            <meta name="description" content="Create an event and let players join you!" />
-            <link rel="icon" href="/favicon.ico" />
-        </Head>
-        
-        <Navbar />
-
-        <div className="h-full grid grid-cols-6">
-            <div className="col-span-1">
-                <Menu />
-            </div>
-        
-        
-        {/* TODO(MC): Clean this code */}
+     <WebsiteShell
+     head_title="Create a poker event"
+     head_description="Create an event and let players join you!"
+     page_title = "find people to join your poker event"
+     >
+         {/* TODO(MC): Clean this code */}
         <div className="col-span-5">
-            <div className="grid grid-cols-7 mt-[50px]">
-            <div className="col-start-3 col-span-3">
+            <div className="grid grid-cols-7">
+            <div className="col-span-3">
                 <FormBase>
-                    <p className="text-white font-bold text-2xl mb-10">
-                        create a poker event
-                    </p>
-
                     <Formik
                         initialValues={initialEvent}
                         validationSchema={validationSchema}
@@ -238,7 +221,7 @@ export default function Home() {
             </div>
             </div>
             </div>
-        </div>
-      </div>
+
+     </WebsiteShell>
   )
 }
