@@ -81,8 +81,12 @@ export const WebsiteShell : React.FC<WebsiteShellProps> = ({
                 </Head>
 
                 {/* TODO(MC): Maybe refactor later using Object.assign() ? */}
-                <DesktopWebsiteShell page_title={page_title} children={children} />
-                <MobileWebsiteShell page_title={page_title} children={children} />
+                <DesktopWebsiteShell page_title={page_title}>
+                    {children}
+                </DesktopWebsiteShell>
+                <MobileWebsiteShell page_title={page_title}>
+                    {children}
+                </MobileWebsiteShell>
             </div>
         )
     }
